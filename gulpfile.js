@@ -1,6 +1,7 @@
 var gulp 	= require('gulp'),
 	less 	= require('gulp-less'),
-	concat	= require('gulp-concat');
+	concat	= require('gulp-concat'),
+	watch 	= require('gulp-watch');
 
 var path = {
 	less: {
@@ -10,9 +11,14 @@ var path = {
 };
 
 gulp.task('less', function(){
-	console.log(path.less.src);
 	gulp.src(path.less.src)
 	.pipe(less())
 	.pipe(concat('styles.css'))
 	.pipe(gulp.dest(path.less.dest));
+});
+
+gulp.task('watch', function(){
+	gulp.watch(path.less.src, function(){
+		gulp.start('less');
+	});
 });

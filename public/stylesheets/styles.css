@@ -1,8 +1,9 @@
 .component1 {
   height: 100px;
-  width: 100px;
+  width: 1010px;
 }
 
 body {
   background-color: blue;
+  border: 2;
 }
