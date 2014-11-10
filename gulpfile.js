@@ -4,48 +4,35 @@ var gulp 		= require('gulp'),
 	watch 		= require('gulp-watch'),
 	app		 	= require('./app.js'),
 	debug		= require('debug')('skinit'),
-	lr 			= require('tiny-lr')(),
-	path		= require('path');
-	express 	= require('express');
+	path		= require('path'),
+	express 	= require('express'),
+	livereload 	= require('gulp-livereload');
 
 var LIVERELOAD_PORT = 35729;
 
 // Start express server and server livereload to clients
 function startServer(){
-	// app.use(require('connect-livereload')());
-
 	app.set('port', process.env.PORT || 3000);
-
 	var server = app.listen(app.get('port'), function() {
 	  debug('Express server listening on port ' + server.address().port);
 	});	
 }
 
-function startLivereload(){
-	console.log('Starting livereload listener');
-	lr.listen(LIVERELOAD_PORT);
-}
-
-function notifyLivereload(file){
-
-	console.log('Notify livereload');
-	// var fileName = path.relative('./public/stylesheets/', file);
-	var fileName = './public/stylesheets/' + file;
-	// var fileName = file;
-	console.log(fileName);
-
-	lr.changed({
-		body: {
-		  files: [fileName]
-		}
-	});	
-}
-
 var path = {
 	less: {
-		src:  './less/*.less',
+		src:  './styles/*.less',
 		dest: './public/stylesheets',
 		file: 'styles.css'
+	},
+	js: {
+		src: [
+				'./bower_components/jquery/dist/jquery.js',
+				'./javascript/*.js'
+			],
+		dest: './public/javascript'
+	},
+	jade: {
+		src: './views/*.jade'
 	}
 };
 
@@ -53,20 +40,38 @@ gulp.task('less', function(){
 	gulp.src(path.less.src)
 	.pipe(less())
 	.pipe(concat(path.less.file))
-	.pipe(gulp.dest(path.less.dest));
-	// .pipe(notifyLivereload(path.less.file));
-	notifyLivereload(path.less.file);
+	.pipe(gulp.dest(path.less.dest))
+	.pipe(livereload());
 });
 
 gulp.task('watch', function(){
+	// Monitor less 
 	gulp.watch(path.less.src, function(){
 		gulp.start('less');
-		// notifyLivereload(file);
 	});
+
+	// Monitor javascript
+	gulp.watch(path.js.src, function(){
+		gulp.src(path.js.src)
+		.pipe(gulp.dest(path.js.dest))
+		.pipe(livereload());
+	});
+
+	// Monitor jade files
+	gulp.watch(path.jade.src, function(file){
+		gulp.src(path.jade.src)
+		.pipe(livereload());
+	});
+
 });
 
-gulp.task('server', ['watch'], function(){
+gulp.task('copyjs', function(){
+	gulp.src(path.js.src)
+	.pipe(gulp.dest(path.js.dest));
+});
+
+gulp.task('server', ['copyjs', 'watch'], function(){
 	startServer();
-	startLivereload();
+	livereload.listen();
 });
 

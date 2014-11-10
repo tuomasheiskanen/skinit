@@ -1,0 +1,22 @@
+{
+	"koneet": [
+		{ "rst" : "koneet_rst.png" }
+	],
+	"laatat": [
+		{ "harmaa": "laatat_harmaa.png" },
+		{ "valkoinen" : "laatat_valkoinen.png" }
+	],
+	"lattiat" : [
+		{ "keski": "lattiat_keski.png" },
+		{ "vaalee": "lattiat_vaalee.png" }
+	],
+	"ovet": [
+		{ "peili": "ovet_peili.png" },
+		{ "puu" : "ovet_puu.png"}
+	],
+	"tasot": [
+		{ "betoni": "taso_betoni.png" },
+		{ "tammi": "taso_tammi.png"}
+	]
+
+}
