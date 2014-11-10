@@ -1,9 +1,10 @@
-.component1 {
-  height: 100px;
-  width: 113px;
+body {
+  background-color: purple;
+  border: 4;
 }
 
-body {
-  background-color: yellow;
-  border: 4;
+.img-container {
+  width: 964px;
+  height: 540px;
+  background-image: url('../images/pohja.png');
 }

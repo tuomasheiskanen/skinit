@@ -33,6 +33,10 @@ var path = {
 	},
 	jade: {
 		src: './views/*.jade'
+	},
+	images: {
+		src: './images/*.png',
+		dest: './public/images'
 	}
 };
 
@@ -70,7 +74,12 @@ gulp.task('copyjs', function(){
 	.pipe(gulp.dest(path.js.dest));
 });
 
-gulp.task('server', ['copyjs', 'watch'], function(){
+gulp.task('copy-images', function(){
+	gulp.src(path.images.src)
+	.pipe(gulp.dest(path.images.dest));
+})
+
+gulp.task('server', ['copyjs', 'copy-images', 'watch'], function(){
 	startServer();
 	livereload.listen();
 });
