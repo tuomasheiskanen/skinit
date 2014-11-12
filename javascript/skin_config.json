@@ -8,18 +8,26 @@
 			"options":
 			[
 				{ 
-					"name": "rst",
+					"name": "Valkoinen",
+					"url": "" 
+				},
+				{ 
+					"name": "RST",
 					"url": "koneet_rst.png" 
 				}
 			]
 		},
 		{
 			"id": "laatat",
-			"name": "Laatat",
+			"name": "Välitila",
 			"options":
 			[
 				{ 
-					"name": "harmaa",
+					"name": "Ruskea",
+					"url": "" 
+				},
+				{ 
+					"name": "Harmaa",
 					"url": "laatat_harmaa.png" 
 				},
 				{ 
@@ -34,11 +42,15 @@
 			"options":
 			[
 				{ 
-					"name": "keski",
+					"name": "Tammi Classic Brown",
+					"url": "" 
+				},
+				{ 
+					"name": "Tammi Natur",
 					"url": "lattiat_keski.png" 
 				},
 				{ 
-					"name": "vaalee",
+					"name": "Tammi Marble Matt",
 					"url": "lattiat_vaalee.png" 
 				}
 			]
@@ -49,11 +61,15 @@
 			"options":
 			[
 				{ 
-					"name": "peili",
+					"name": "Eira",
+					"url": "" 
+				},
+				{ 
+					"name": "Sirja",
 					"url": "ovet_peili.png" 
 				},
 				{ 
-					"name": "puu",
+					"name": "MonaX",
 					"url": "ovet_puu.png"
 				}
 			]
@@ -64,11 +80,15 @@
 			"options":
 			[
 				{ 
-					"name": "betoni",
+					"name": "Wenge",
+					"url": "" 
+				},
+				{ 
+					"name": "Betoni",
 					"url": "taso_betoni.png" 
 				},
 				{ 
-					"name": "tammi",
+					"name": "Tammi",
 					"url": "taso_tammi.png"
 				}
 			]

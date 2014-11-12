@@ -11,6 +11,6 @@ body {
 }
 .layout .layer {
   position: absolute;
-  width: 964px;
-  height: 540px;
+  width: inherit;
+  height: inherit;
 }

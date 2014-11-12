@@ -37,6 +37,10 @@ $(document).ready(function(){
  			var select = $('<select>');
 			select.attr('id', layer.id);
 
+			layer.options = layer.options.sort(function(a,b){
+				return a.url < b.url ? -1 : 1;
+			});
+
 			for(var j=0; j<layer.options.length; j++){
 				var option = layer.options[j];
 				var opt = $('<option>');
@@ -53,8 +57,6 @@ $(document).ready(function(){
 
 	function registerEvents(){
 
-		console.log('Register events');
-
 		$('.controls').change(function(ev){
 
 			console.log('change event');
@@ -62,7 +64,12 @@ $(document).ready(function(){
 			var layerId = target.attr('id');
 			var filename = target.val();
 
-			$('#layer-' + layerId).css('background-image', 'url(./images/' + filename + ')');
+			if(!filename || filename.length == 0){
+				$('#layer-' + layerId).css('background-image', '');
+			}else{
+				$('#layer-' + layerId).css('background-image', 'url(./images/' + filename + ')');
+			}
+
 		});
 	}
 
