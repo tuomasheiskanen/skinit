@@ -27,7 +27,8 @@ var path = {
 	js: {
 		src: [
 				'./bower_components/jquery/dist/jquery.js',
-				'./javascript/*.js'
+				'./javascript/*.js',
+				'./javascript/*.json'
 			],
 		dest: './public/javascript'
 	},

@@ -3,8 +3,14 @@ body {
   border: 4;
 }
 
-.img-container {
+.layout {
+  position: relative;
   width: 964px;
   height: 540px;
   background-image: url('../images/pohja.png');
+}
+.layout .layer {
+  position: absolute;
+  width: 964px;
+  height: 540px;
 }
