@@ -1,13 +1,26 @@
 body {
-  background-color: purple;
+  background-color: #eeeeee;
   border: 4;
+}
+.page-header {
+  height: 100px;
+  width: 100%;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+div.content {
+  background-color: white;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .layout {
   position: relative;
   width: 964px;
   height: 540px;
-  background-image: url('../images/pohja.png');
 }
 .layout .layer {
   position: absolute;

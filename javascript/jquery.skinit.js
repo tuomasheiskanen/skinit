@@ -3,7 +3,7 @@
 	$.fn.skinit = function(data){
 		var rootElement = $(this);
 		render(rootElement, data);
-		registerEvents();
+		registerEvents(rootElement);
 		return this;
 	}
 
@@ -17,8 +17,8 @@
 		// container for option controls
 		var optionsContainer = $('<div class="controls">');
 
-		rootElement.append(layoutContainer);
 		rootElement.append(optionsContainer);
+		rootElement.append(layoutContainer);
 
 		// introduce layers
 		for(var i=0; i<conf.layers.length; i++){ 
@@ -55,18 +55,18 @@
 		}
 	}
 
-	function registerEvents(){
+	function registerEvents(root){
 
-		$('.controls').change(function(ev){
+		$(root, '.controls').change(function(ev){
 
 			var target = $(ev.target);
 			var layerId = target.attr('id');
 			var filename = target.val();
 
 			if(!filename || filename.length == 0){
-				$('#layer-' + layerId).css('background-image', '');
+				$(this).find('#layer-' + layerId).css('background-image', '');
 			}else{
-				$('#layer-' + layerId).css('background-image', 'url(./images/' + filename + ')');
+				$(this).find('#layer-' + layerId).css('background-image', 'url(./images/' + filename + ')');
 			}
 
 		});
